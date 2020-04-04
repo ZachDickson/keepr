@@ -1,3 +1,3 @@
 export const domain = "dev-1k3ferig.auth0.com";
-export const audience = "http://keepr.com";
-export const clientId = "xprNgzbKmjTVH7CyYDLioJQ6ql3FsVgA";
+export const audience = "https://keepr99.com";
+export const clientId = "XmEgMY7mEYYWhjMezy8l60dv2j8cMVYI";

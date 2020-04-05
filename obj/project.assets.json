@@ -14,7 +14,7 @@
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.1": {
+      "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "5.5.0"
@@ -137,7 +137,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "MySqlConnector/0.59.2": {
+      "MySqlConnector/0.63.1": {
         "type": "package",
         "compile": {
           "lib/netcoreapp3.0/MySqlConnector.dll": {}
@@ -845,17 +845,17 @@
         "lib/netstandard2.0/Dapper.xml"
       ]
     },
-    "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.1": {
-      "sha512": "m7uchb4whAlqpvdARfjmUJtdHLvmVwxiy7dcEYp3OqSP7OXUK7vL4m99YRAEFZYtzq+WQgCn7Yk1Mb5xqBtXEQ==",
+    "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.3": {
+      "sha512": "F19wwKzyE1K/KF30XZq2STKNJNxBrTKa1wLxTy5qdgXh7akzgLreMdC3j7rPzIQVGHlPCMeI30fpmD1k5zHkCQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authentication.jwtbearer/3.1.1",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/3.1.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
-        "microsoft.aspnetcore.authentication.jwtbearer.3.1.1.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.3.1.3.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
@@ -1053,23 +1053,31 @@
         "runtime.json"
       ]
     },
-    "MySqlConnector/0.59.2": {
-      "sha512": "GU999Wx9wpsjP2GANNn0WKp1iTb9drHh0fgn+7nCefS4KWYQoYAuvWvhD65dm09pqL0aa1mXPT4wWGrRMoN+gg==",
+    "MySqlConnector/0.63.1": {
+      "sha512": "KwJYM/WLM0U/NvJ5y8jnQPNI9l01g0/ge4z9BezCKmprV7OejcMXDSJGKcLmomV8g0Q08T3SfyOADDT1CwMfWA==",
       "type": "package",
-      "path": "mysqlconnector/0.59.2",
+      "path": "mysqlconnector/0.63.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net45/MySqlConnector.dll",
+        "lib/net45/MySqlConnector.xml",
         "lib/net461/MySqlConnector.dll",
+        "lib/net461/MySqlConnector.xml",
         "lib/net471/MySqlConnector.dll",
+        "lib/net471/MySqlConnector.xml",
         "lib/netcoreapp2.1/MySqlConnector.dll",
+        "lib/netcoreapp2.1/MySqlConnector.xml",
         "lib/netcoreapp3.0/MySqlConnector.dll",
+        "lib/netcoreapp3.0/MySqlConnector.xml",
         "lib/netstandard1.3/MySqlConnector.dll",
+        "lib/netstandard1.3/MySqlConnector.xml",
         "lib/netstandard2.0/MySqlConnector.dll",
+        "lib/netstandard2.0/MySqlConnector.xml",
         "lib/netstandard2.1/MySqlConnector.dll",
+        "lib/netstandard2.1/MySqlConnector.xml",
         "logo.png",
-        "mysqlconnector.0.59.2.nupkg.sha512",
+        "mysqlconnector.0.63.1.nupkg.sha512",
         "mysqlconnector.nuspec"
       ]
     },
@@ -3638,8 +3646,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.1",
-      "MySqlConnector >= 0.59.2",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.3",
+      "MySqlConnector >= 0.63.1",
       "dapper >= 2.0.30"
     ]
   },
@@ -3680,11 +3688,11 @@
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
-            "version": "[3.1.1, )"
+            "version": "[3.1.3, )"
           },
           "MySqlConnector": {
             "target": "Package",
-            "version": "[0.59.2, )"
+            "version": "[0.63.1, )"
           },
           "dapper": {
             "target": "Package",

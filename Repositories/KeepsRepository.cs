@@ -32,23 +32,46 @@ namespace Keepr.Repositories
 
     internal IEnumerable<Keep> GetUserKeeps(string userId)
     {
-      string sql = "SELECT * FROM keeps WHERE authorId = @userId";
+      string sql = "SELECT * FROM keeps WHERE userId = @UserId";
       return _db.Query<Keep>(sql, new { userId });
     }
+
 
     internal Keep Create(Keep KeepData)
     {
       string sql = @"
             INSERT INTO keeps
-            (userId, name, description, img, isPrivate, shares, keeps)
+            (userId, name, description, img, isPrivate, views, shares, keeps, id)
             Values
-            (@userId, @name, @description, @img, @isPrivate, @shares, @keeps)";
-      // SELECT LAST_INSERT()";
+            (@UserId, @Name, @Description, @Img, @IsPrivate, views, @Shares, @Keeps, @Id);
+        SELECT LAST_INSERT_ID();
+        ";
       KeepData.Id = _db.ExecuteScalar<int>(sql, KeepData);
       return KeepData;
     }
 
 
+
+    internal Keep Edit(Keep updatedKeep)
+    {
+      string sql = @"
+            UPDATE keeps
+            SET
+            name = @Name,
+            description = @Description
+            WHERE id = @id
+            ";
+      _db.Execute(sql, updatedKeep);
+      return updatedKeep;
+    }
+
+
+    internal bool Delete(int Id)
+    {
+      string sql = "DELETE FROM keeps WHERE id = @Id LIMIT 1";
+      int removed = _db.Execute(sql, new { Id });
+      return removed == 1;
+    }
 
 
   }

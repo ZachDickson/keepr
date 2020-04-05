@@ -16,25 +16,19 @@ namespace Keepr.Repositories
     }
 
 
-    // internal IEnumerable<Vault> Get()
-    // {
-    //   string sql = "SELECT * FROM Vaults WHERE isPrivate = 0;";
-    //   return _db.Query<Vault>(sql);
-    // }
+    internal IEnumerable<Vault> Get()
+    {
+      string sql = "SELECT * FROM vaults";
+      return _db.Query<Vault>(sql);
+    }
 
 
     internal Vault Get(int id)
     {
       string sql = "SELECT * FROM vaults WHERE id = @Id";
-      return _db.QueryFirstOrDefault<Vault>(sql, new { Id = id });
+      return _db.QueryFirstOrDefault<Vault>(sql, new { id });
     }
 
-
-    internal IEnumerable<Vault> GetUserVaults(string userId)
-    {
-      string sql = "SELECT * FROM vaults WHERE userId = @UserId";
-      return _db.Query<Vault>(sql, new { userId });
-    }
 
 
     internal Vault Create(Vault VaultData)

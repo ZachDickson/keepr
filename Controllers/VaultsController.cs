@@ -22,28 +22,12 @@ namespace Keepr.Controllers
     }
 
 
-    // [HttpGet]
-    // public ActionResult<IEnumerable<Vault>> Get()
-    // {
-    //   try
-    //   {
-    //     return Ok(_vs.Get());
-    //   }
-    //   catch (Exception e)
-    //   {
-    //     return BadRequest(e.Message);
-    //   };
-    // }
-
-
-    [HttpGet("myVaults")]
-    [Authorize]
-    public ActionResult<IEnumerable<Vault>> GetUserVaults()
+    [HttpGet]
+    public ActionResult<IEnumerable<Vault>> Get()
     {
       try
       {
-        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        return Ok(_vs.GetUserVaults(userId));
+        return Ok(_vs.Get());
       }
       catch (Exception e)
       {
@@ -54,25 +38,15 @@ namespace Keepr.Controllers
 
 
     [HttpGet("{id}")]
+    [Authorize]
     public ActionResult<Vault> Get(int id)
     {
       try
       {
-        Vault vault = _vs.Get(id);
-        // if (vault.IsPrivate)
-        // {
-        //   var user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-        //   if (user != null && user.Value == vault.UserId)
-        //   {
-        //     return Ok(vault);
-        //   }
-        //   return Unauthorized("Access Denied");
-        // }
-        return Ok(vault);
+        return Ok(_vs.Get(id));
       }
       catch (Exception e)
       {
-
         return BadRequest(e.Message);
       }
     }

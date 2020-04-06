@@ -59,7 +59,7 @@ namespace Keepr.Controllers
     {
       try
       {
-        return Ok(_ks.Get());
+        return Ok(_ks.GetKeepsByVaultId(id));
       }
       catch (Exception e)
       {

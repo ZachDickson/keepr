@@ -33,15 +33,13 @@ export default new Vuex.Store({
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
-    async getPublicKeeps(dispatch, commit) {
+    async getPublicKeeps({ commit }) {
       try {
         let res = await api.get("keeps")
-        commit("setKeeps", res.data)
+        commit("setPublicKeeps", res.data)
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-
-
     }
   }
 });

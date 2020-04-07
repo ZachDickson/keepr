@@ -15,6 +15,7 @@
 import keep from "../components/keep";
 
 export default {
+  name: "Dashboard",
   mounted() {},
   computed: {},
   components: {

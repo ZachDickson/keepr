@@ -1,19 +1,20 @@
 <template>
-  <div class="card mb-3 shadow p-3 mb-5 bg-black rounded">
-    <div v-for="keep in publicKeeps" :key="keep.id">
-      <h3 class="card-header">{{keep.name}}</h3>
-      <img
-        style="height: 10rem; width: 100%; display: block;"
-        alt="Card image"
-        src="https://picsum.photos/200"
-      />
-      <div class="card-body">
-        <p class="card-text">{{keep.description}}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">views, shares, keeps</li>
-      </ul>
+  <div class="col-2 card mb-3 shadow p-3 mb-5 bg-black rounded mx-3 my-3">
+    <i class="fas fa-plus-circle"></i>
+    <h3 class="card-header">{{keepProp.name}}</h3>
+    <img
+      style="height: 10rem; width: 100%; display: block;"
+      alt="Card image"
+      v-bind:src="keepProp.img"
+    />
+    <div class="card-body">
+      <p class="card-text">{{keepProp.description}}</p>
     </div>
+    <ul class="list-group list-group-flush">
+      <li
+        class="list-group-item"
+      >views {{keepProp.views}}, shares {{keepProp.shares}}, keeps {{keepProp.keeps}}</li>
+    </ul>
   </div>
 </template>
 
@@ -21,16 +22,13 @@
 export default {
   name: "keep",
 
+  props: ["keepProp"],
+
   mounted() {
-    this.$store.dispatch("getPublicKeeps");
     console.log(this.$store.state.publicKeeps);
   },
 
-  computed: {
-    publicKeeps() {
-      return this.$store.state.publicKeeps;
-    }
-  }
+  computed: {}
 };
 </script>
 

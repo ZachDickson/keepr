@@ -1,13 +1,22 @@
 <template>
   <div class="home text-center">
     <h1>Welcome to Keepr!</h1>
-    <button class="btn btn-success" type="button">Create A Keep</button>
-
+    <button
+      v-if="!keepFormToggle"
+      @click="keepFormToggle = true"
+      class="btn btn-primary"
+      type="button"
+    >Create a Keep</button>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-2">
-          <keep />
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <keepForm v-if="keepFormToggle" v-on:cancelToggle="keepFormToggler" />
         </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row" id="keepRow">
+        <keep v-for="keep in publicKeeps" :key="keep.id" :keepProp="keep" />
       </div>
     </div>
   </div>
@@ -15,17 +24,42 @@
 
 <script>
 import keep from "../components/keep";
+import keepForm from "../components/keepForm";
 
 export default {
   name: "home",
-  computed: {},
+
+  mounted() {
+    this.$store.dispatch("getPublicKeeps");
+  },
+
+  computed: {
+    publicKeeps() {
+      return this.$store.state.publicKeeps;
+    }
+  },
   methods: {
     logout() {
       this.$store.dispatch("logout");
+    },
+    keepFormToggler() {
+      this.keepFormToggle = false;
+    },
+    cancelToggle() {
+      this.keepFormToggle = false;
     }
   },
   components: {
-    keep
+    keep,
+    keepForm
+  },
+  data() {
+    return {
+      keepFormToggle: false
+    };
   }
 };
 </script>
+
+<style>
+</style>

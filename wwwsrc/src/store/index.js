@@ -20,12 +20,21 @@ export default new Vuex.Store({
     publicKeeps: [],
     keeps: []
   },
+
+
   mutations: {
 
     setPublicKeeps(state, publicKeeps) {
       state.publicKeeps = publicKeeps
+    },
+
+    createKeep(state, keep) {
+      state.publicKeeps.push(keep)
     }
   },
+
+
+
   actions: {
     setBearer({ }, bearer) {
       api.defaults.headers.authorization = bearer;
@@ -37,6 +46,15 @@ export default new Vuex.Store({
       try {
         let res = await api.get("keeps")
         commit("setPublicKeeps", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async createKeep({ commit }, keep) {
+      try {
+        let res = await api.post("keeps", keep)
+        commit("createKeep", res.data)
       } catch (error) {
         console.error(error);
       }

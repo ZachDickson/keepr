@@ -1,14 +1,25 @@
 <template>
-  <div class="dashboard">
-    <h1>WELCOME TO THE DASHBOARD</h1>
-    public {{ publicKeeps }} user {{ userKeeps }}
+  <div class="dashboard text-center">
+    <h1>This is your stuff!</h1>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2">
+          <keep />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import keep from "../components/keep";
+
 export default {
   mounted() {},
-  computed: {}
+  computed: {},
+  components: {
+    keep
+  }
 };
 </script>
 

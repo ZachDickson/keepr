@@ -23,6 +23,7 @@ namespace Keepr.Controllers
 
 
     [HttpGet]
+    [Authorize]
     public ActionResult<IEnumerable<Vaultkeep>> Get()
     {
       try

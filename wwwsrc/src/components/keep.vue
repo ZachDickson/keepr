@@ -1,6 +1,7 @@
 <template>
   <div class="col-3">
     <div class="text-right">
+      <button @click="addKeepToVault" class="btn btn-success"></button>
       <button @click="deleteKeep" class="btn btn-danger"></button>
     </div>
     <div id="keepCard" class="card mb-3 shadow p-3 mb-5 bg-black rounded">
@@ -35,6 +36,10 @@ export default {
   methods: {
     deleteKeep() {
       this.$store.dispatch("deleteKeep", this.keepProp.id);
+    },
+
+    addKeepToVault() {
+      this.$store.dispatch("addKeepToVault", this.keepProp);
     }
   }
 };

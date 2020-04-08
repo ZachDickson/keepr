@@ -19,7 +19,8 @@ export default new Vuex.Store({
   state: {
     publicKeeps: [],
     keeps: [],
-    vaults: []
+    vaults: [],
+    currentVault: { keeps: [] }
   },
 
 
@@ -41,8 +42,12 @@ export default new Vuex.Store({
       state.publicKeeps = state.publicKeeps.filter(pk => pk.id != keepId)
     },
 
-    setVaults(state, vault) {
-      state.vaults = vault
+    setVaults(state, vaults) {
+      state.vaults = vaults
+    },
+
+    setCurrentVault(state, vault) {
+      state.currentVault = vault
     },
 
     createVault(state, vault) {

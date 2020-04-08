@@ -35,7 +35,7 @@
     <div class="container-fluid">
       <h1 class="text-left">Keeps</h1>
       <div class="row" id="keepRow">
-        <keep v-for="(keep, index) in keeps" :key="index" :keepProp="keep" />
+        <keep v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
       </div>
     </div>
   </div>
@@ -50,8 +50,8 @@ import vaultForm from "../components/vaultForm";
 export default {
   name: "Dashboard",
   mounted() {
-    this.$store.dispatch("getUserKeeps");
     this.$store.dispatch("getVaults");
+    this.$store.dispatch("getUserKeeps");
   },
   computed: {
     keeps() {

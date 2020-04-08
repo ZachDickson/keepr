@@ -25,11 +25,19 @@ export default new Vuex.Store({
   mutations: {
 
     setPublicKeeps(state, publicKeeps) {
-      state.publicKeeps = publicKeeps
+      state.publicKeeps = publicKeeps.filter(pk => !pk.isPrivate)
+    },
+
+    setUserKeeps(state, keeps) {
+      state.keeps = keeps
     },
 
     createKeep(state, keep) {
       state.publicKeeps.push(keep)
+    },
+
+    deleteKeep(state, keepId) {
+      state.publicKeeps = state.publicKeeps.filter(pk => pk.id != keepId)
     }
   },
 
@@ -39,9 +47,11 @@ export default new Vuex.Store({
     setBearer({ }, bearer) {
       api.defaults.headers.authorization = bearer;
     },
+
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
+
     async getPublicKeeps({ commit }) {
       try {
         let res = await api.get("keeps")
@@ -57,6 +67,15 @@ export default new Vuex.Store({
         commit("createKeep", res.data)
       } catch (error) {
         console.error(error);
+      }
+    },
+
+    async deleteKeep({ commit }, keepId) {
+      try {
+        let res = await api.delete(`keeps/${keepId}`)
+        commit("deleteKeep", keepId)
+      } catch (error) {
+        console.error();
       }
     }
   }

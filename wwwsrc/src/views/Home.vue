@@ -4,19 +4,19 @@
     <button
       v-if="!keepFormToggle"
       @click="keepFormToggle = true"
-      class="btn btn-primary"
+      class="btn btn-primary my-3"
       type="button"
     >Create a Keep</button>
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-4">
-          <keepForm v-if="keepFormToggle" v-on:cancelToggle="keepFormToggler" />
+          <keepForm v-if="keepFormToggle" @clicked="cancelToggle" />
         </div>
       </div>
     </div>
     <div class="container-fluid">
       <div class="row" id="keepRow">
-        <keep v-for="keep in publicKeeps" :key="keep.id" :keepProp="keep" />
+        <keep v-for="(keep, index) in publicKeeps" :key="index" :keepProp="keep" />
       </div>
     </div>
   </div>

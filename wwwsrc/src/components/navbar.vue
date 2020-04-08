@@ -26,7 +26,11 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'dashboard' }"
         >
-          <router-link class="nav-link" :to="{ name: 'dashboard' }">My Stuff</router-link>
+          <router-link
+            v-if="$auth.isAuthenticated"
+            class="nav-link"
+            :to="{ name: 'dashboard' }"
+          >My Stuff</router-link>
         </li>
       </ul>
 

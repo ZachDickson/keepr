@@ -43,6 +43,14 @@ export default new Vuex.Store({
 
     setVaults(state, vault) {
       state.vaults = vault
+    },
+
+    createVault(state, vault) {
+      state.vaults.push(vault)
+    },
+
+    deleteVault(state, vaultId) {
+      state.vaults = state.vaults.filter(v => v.id != vaultId)
     }
   },
 
@@ -91,6 +99,24 @@ export default new Vuex.Store({
         commit("setVaults", res.data)
       } catch (error) {
         console.error(error);
+      }
+    },
+
+    async createVault({ commit }, vault) {
+      try {
+        let res = await api.post("vaults", vault)
+        commit("createVault", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async deleteVault({ commit }, vaultId) {
+      try {
+        let res = await api.delete(`vaults/${vaultId}`)
+        commit("deleteVault", vaultId)
+      } catch (error) {
+        console.error();
       }
     }
 

@@ -24,7 +24,7 @@ export default {
 
   methods: {
     deleteVault() {
-      this.$store.dispatch("deleteVault", this.keepProp.id);
+      this.$store.dispatch("deleteVault", this.vaultProp.id);
     }
   }
 };

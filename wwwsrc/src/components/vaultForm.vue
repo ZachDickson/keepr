@@ -38,8 +38,6 @@ export default {
     },
 
     createVault() {
-      console.log(this.newVault);
-
       this.$store.dispatch("createVault", this.newVault);
       this.$emit("clicked");
     }

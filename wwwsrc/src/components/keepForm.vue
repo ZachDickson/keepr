@@ -48,8 +48,6 @@ export default {
     },
 
     createKeep() {
-      console.log(this.newKeep);
-
       this.$store.dispatch("createKeep", this.newKeep);
       this.$emit("clicked");
     }

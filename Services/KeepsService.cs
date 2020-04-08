@@ -27,7 +27,6 @@ namespace Keepr.Services
     }
 
 
-
     public Keep Get(int id)
     {
       Keep found = _repo.Get(id);
@@ -45,12 +44,10 @@ namespace Keepr.Services
     }
 
 
-
     public Keep Create(Keep newKeep)
     {
       return _repo.Create(newKeep);
     }
-
 
 
     public Keep Edit(Keep updatedKeep)
@@ -64,7 +61,6 @@ namespace Keepr.Services
       found.Description = updatedKeep.Description != null ? updatedKeep.Description : found.Description;
       return _repo.Edit(found);
     }
-
 
 
     public Keep Delete(int id, string userId)

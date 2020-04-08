@@ -39,16 +39,15 @@ namespace Keepr.Controllers
 
     [HttpGet("myKeeps")]
     [Authorize]
-    public ActionResult<IEnumerable<Keep>> GetUserKeeps(string userId)
+    public ActionResult<IEnumerable<Keep>> GetUserKeeps()
     {
       try
       {
-        // string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         return Ok(_ks.GetUserKeeps(userId));
       }
       catch (Exception e)
       {
-
         return BadRequest(e.Message);
       }
     }

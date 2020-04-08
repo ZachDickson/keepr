@@ -74,6 +74,15 @@ export default new Vuex.Store({
       }
     },
 
+    async getUserKeeps({ commit }) {
+      try {
+        let res = await api.get("keeps/myKeeps")
+        commit("setUserKeeps", res.data)
+      } catch (error) {
+        console.error();
+      }
+    },
+
     async createKeep({ commit }, keep) {
       try {
         let res = await api.post("keeps", keep)

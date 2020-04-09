@@ -16,10 +16,10 @@ namespace Keepr.Repositories
     }
 
 
-    internal IEnumerable<Vaultkeep> Get()
+    internal IEnumerable<Vaultkeep> Get(string userId)
     {
-      string sql = "SELECT * FROM vaultkeeps";
-      return _db.Query<Vaultkeep>(sql);
+      string sql = "SELECT * FROM vaultkeeps WHERE userId = @UserId";
+      return _db.Query<Vaultkeep>(sql, new { userId });
     }
 
 

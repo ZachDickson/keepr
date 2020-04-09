@@ -49,9 +49,12 @@ import vaultForm from "../components/vaultForm";
 
 export default {
   name: "Dashboard",
-  mounted() {
-    this.$store.dispatch("getVaults");
-    this.$store.dispatch("getUserKeeps");
+  async mounted() {
+    if (await this.$auth.isAuthenticated) {
+      this.$store.dispatch("getVaults");
+      this.$store.dispatch("getUserKeeps");
+      this.$store.dispatch("getVaultkeeps");
+    }
   },
   computed: {
     keeps() {

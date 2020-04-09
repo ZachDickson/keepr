@@ -8,8 +8,4 @@ namespace Keepr.Models
     public string UserId { get; set; }
   }
 
-  // public class VaultKeepViewModel : Vaultkeep
-  // {
-  //   public int VaultKeepId { get; set; }
-  // }
 }

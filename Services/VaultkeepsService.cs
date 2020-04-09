@@ -15,9 +15,9 @@ namespace Keepr.Services
     }
 
 
-    public IEnumerable<Vaultkeep> Get()
+    public IEnumerable<Vaultkeep> Get(string userId)
     {
-      return _repo.Get();
+      return _repo.Get(userId);
     }
 
 
@@ -36,11 +36,6 @@ namespace Keepr.Services
 
     public Vaultkeep Create(Vaultkeep newVaultkeep)
     {
-      Vaultkeep created = _repo.Create(newVaultkeep);
-      if (created == null)
-      {
-        throw new Exception("create failed");
-      }
       return _repo.Create(newVaultkeep);
     }
 

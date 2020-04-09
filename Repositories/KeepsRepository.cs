@@ -71,7 +71,8 @@ namespace Keepr.Repositories
             UPDATE keeps
             SET
             name = @Name,
-            description = @Description
+            description = @description,
+            keeps = @Keeps
             WHERE id = @id
             ";
       _db.Execute(sql, updatedKeep);

@@ -20,7 +20,8 @@ export default new Vuex.Store({
     publicKeeps: [],
     keeps: [],
     vaults: [],
-    currentVault: { keeps: [] }
+    currentVault: { keeps: [] },
+    vaultkeeps: []
   },
 
 
@@ -48,6 +49,7 @@ export default new Vuex.Store({
 
     setCurrentVault(state, vault) {
       state.currentVault = vault
+
     },
 
     createVault(state, vault) {
@@ -56,7 +58,16 @@ export default new Vuex.Store({
 
     deleteVault(state, vaultId) {
       state.vaults = state.vaults.filter(v => v.id != vaultId)
+    },
+
+    addKeepsToVault(state, keeps) {
+      state.currentVault.keeps.push(keeps)
+    },
+
+    setVaultkeeps(state, vaultkeeps) {
+      state.vaultkeeps = vaultkeeps
     }
+
   },
 
 
@@ -88,12 +99,33 @@ export default new Vuex.Store({
       }
     },
 
+    async getKeepsByVaultId({ commit }, vault) {
+      try {
+        let res = await api.get(`vaults/${vault.id}/keeps`)
+        let currentVault = this.state.currentVault
+        currentVault.keeps = res.data
+        commit("setCurrentVault", currentVault)
+      } catch (error) {
+        console.error();
+      }
+    },
+
     async createKeep({ commit }, keep) {
       try {
         let res = await api.post("keeps", keep)
         commit("createKeep", res.data)
       } catch (error) {
         console.error(error);
+      }
+    },
+
+    async editKeep({ commit }, keep) {
+      try {
+        console.log(keep);
+
+        let res = await api.put(`keeps/${keep.id}`, keep)
+      } catch (error) {
+        console.error();
       }
     },
 
@@ -131,8 +163,24 @@ export default new Vuex.Store({
       } catch (error) {
         console.error();
       }
-    }
+    },
 
+    async getVaultkeeps({ commit }, ) {
+      try {
+        let res = await api.get("vaultkeeps")
+        commit("setVaultkeeps", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async addKeepToVault({ commit }, vaultkeep) {
+      try {
+        let res = await api.post("vaultkeeps", vaultkeep)
+      } catch (error) {
+        console.error();
+      }
+    },
 
   }
 });

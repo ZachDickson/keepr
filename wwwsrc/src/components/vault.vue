@@ -30,8 +30,7 @@ export default {
     },
 
     setCurrentVault() {
-      this.$store.commit("setCurrentVault", this.vaultProp);
-      console.log(this.$store.state.currentVault);
+      this.$store.dispatch("getKeepsByVaultId", this.vaultProp);
     }
   }
 };
